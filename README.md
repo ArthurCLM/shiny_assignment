@@ -20,6 +20,4 @@ The tabs **'Table', 'Chart-Line', 'Other Charts'**
 
 Beautiful UI skill: I change the layout a little bit, using .css file within the *www* folder
 
-Infrastructure skill: I used a simple application using shiny-server with Azure cloud provider. As you can see in the link:
-
 I also put this dashboard on https://www.shinyapps.io/, follow the link: https://arthurclm.shinyapps.io/shiny/
