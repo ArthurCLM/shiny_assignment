@@ -1,0 +1,180 @@
+/* Import fonts */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap");
+
+html,
+body {
+  height: 100%;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+}
+
+.wrapper {
+  height: 100%;
+}
+
+.content-wrapper {
+  min-height: 100%;
+  margin-left: 215px;
+  background-color: #f3f3f3;
+  font-family: "Montserrat", sans-serif;
+}
+
+aside.main-sidebar {
+  width: 215px;
+  background-color: #262930;
+}
+
+aside.main-sidebar .sidebar-menu > li > a {
+  border-left: 5px solid transparent;  
+  font-family: "Montserrat", sans-serif;
+}
+
+aside.main-sidebar .sidebar-menu > li.active > a {
+  background-color: #1c1d22;
+  border-left-color: #0d8a01;
+}
+
+aside.main-sidebar .sidebar-menu > li:hover > a {
+  background-color: #1c1d22;
+  border-left-color: #0d8a01;
+}
+
+aside.main-sidebar .sidebar-menu .treeview-menu > li > a {
+  font-size: 12px;
+  font-family: "Montserrat", sans-serif;
+}
+
+aside.main-sidebar .sidebar-menu .fa-angle-left {
+  margin-top: -5px;
+}
+
+.box {
+  border-radius: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+.box .box-header .box-title {
+  font-size: 16px;
+  color: #959393;
+}
+
+.box .box-body .btn-default,
+.box .box-body .action-button {
+  border: none;
+  padding: 10px 15px;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  text-transform: uppercase;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  background-color: #0d8a01;
+}
+
+.box .box-body .btn-default:hover {
+  background-color: #0d8a01;
+}
+
+.box .box-body .btn-default .fa {
+  margin-right: 5px;
+}
+
+.box .box-body th {
+  font-size: 12px;
+}
+
+.box .box-body td {
+  font-size: 12px;
+  color: #959393;
+}
+
+.box .dataTables_wrapper .dataTables_filter {
+  display: flex;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.box .dataTables_wrapper .dataTables_filter label {
+  margin: 0;
+  padding-left: 30px;
+  border-top-right-radius: 100%;
+  border-bottom-right-radius: 100%;
+  background-color: #525659;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.box .dataTables_wrapper .dataTables_filter label input {
+  width: 350px;
+  margin-left: 30px;
+  padding: 12px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border: none;
+  background-color: #f3f3f3;
+  color: #959393;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  outline: none;
+}
+
+.box .dataTables_wrapper .dt-buttons {
+  float: left;
+}
+
+.box .dataTables_wrapper button.dt-button {
+  box-shadow: none;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 5px;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  text-transform: uppercase;
+  background: #515151;
+  outline: none;
+}
+
+.box .dataTables_wrapper button.dt-button:hover {
+  border: none;
+  background: #525659;
+}
+
+.box .dataTables_wrapper .dataTables_paginate .paginate_button {
+  border: none;
+}
+
+.box .dataTables_wrapper .dataTables_paginate span .paginate_button.current {
+  background: #525659;
+  color: #fff !important;
+}
+
+.nav-tabs-custom .nav-tabs li.active:hover a,
+                    .nav-tabs-custom .nav-tabs li.active a {background-color: #fff;
+                                               border-color: #fff;
+                                               }
+                    .nav-tabs-custom .nav-tabs li.active {border-top-color:
+                                                      #0d8a01;
+                                                      }
+
+
