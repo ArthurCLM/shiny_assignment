@@ -4,15 +4,15 @@ The dashboard works as follows:
 
 When loading the screen, the user can observe two filters and a map, each of these filters represent the type of selection, one being by the "vernacularName" variable and the other by the "scientificName" variable, it is worth nothing that when selecting a filter option "vernacularName", automatically the filter "scientificName" is updated and consequently the base of observations is updated as well. As a consequence, when updating the base, the tabs 'Map', 'Table', 'Chart Line', 'Other charts' are updated automatically.
 
-![Alt text](/shiny_appsilon_assignment/images_tutorial/to/img1.jpg?raw=true "Optional Title")
+![Alt text](/shiny_appsilon_assignment/images_tutorial/to/img1.png?raw=true "Optional Title")
 
 In the 'Map' tab, the user can observe the points on the map, when touching the observation, some information that I found of some relevance to the user will appear, such as: 'Id', 'Country', 'Vernacular Name' , 'Scientific Name', 'Kingdom' and so on.
 
-![Alt text](/shiny_appsilon_assignment/images_tutorial/to/img2.jpg?raw=true "Optional Title")
+![Alt text](/shiny_appsilon_assignment/images_tutorial/to/img2.png?raw=true "Optional Title")
 
 We can also see that there is another filter that the user can view only points with available images. To view these images, just click on the marker.
 
-![Alt text](/shiny_appsilon_assignment/images_tutorial/to/img3.jpg?raw=true "Optional Title")
+![Alt text](/shiny_appsilon_assignment/images_tutorial/to/img3.png?raw=true "Optional Title")
 
 The tabs **'Table', 'Chart-Line', 'Other Charts'** 
 
