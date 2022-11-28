@@ -4,7 +4,7 @@ The project can be seen at the link: https://arthurclm.shinyapps.io/shiny/
 
 The dashboard works as follows:
 
-When loading the screen, the user can observe two filters and a map, each of these filters represents the type of selection, one being by the "vernacularName" variable and the other by the "scientificName" variable, it is worth nothing that when selecting a filter option "vernacularName", automatically the filter "scientificName" is updated and consequently the base of observations is updated as well. As a consequence, when updating the base, the tabs **Map**, **Table**, **Chart Line** and **'Other charts'** are updated automatically.
+When loading the screen, the user can observe two filters and a map, each of these filters represents the type of selection, one being by the "vernacularName" variable and the other by the "scientificName", it is worth nothing that when selecting a filter option "vernacularName", automatically the filter "scientificName" is updated and consequently the base of observations is updated as well. As a consequence, when updating the base, the tabs **Map**, **Table**, **Chart Line** and **'Other charts'** are updated automatically.
 
 ![](images_tutorial/img1.png)
 
