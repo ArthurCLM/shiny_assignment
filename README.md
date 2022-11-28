@@ -5,7 +5,6 @@ The dashboard works as follows:
 When loading the screen, the user can observe two filters and a map, each of these filters represent the type of selection, one being by the "vernacularName" variable and the other by the "scientificName" variable, it is worth nothing that when selecting a filter option "vernacularName", automatically the filter "scientificName" is updated and consequently the base of observations is updated as well. As a consequence, when updating the base, the tabs 'Map', 'Table', 'Chart Line', 'Other charts' are updated automatically.
 
 ![](shiny_appsilon_assignment/images_tutorial/img1.png)<!-- -->
-![Alt text](/shiny_appsilon_assignment/images_tutorial/img1.png?raw=true "Optional Title")
 
 In the 'Map' tab, the user can observe the points on the map, when touching the observation, some information that I found of some relevance to the user will appear, such as: 'Id', 'Country', 'Vernacular Name' , 'Scientific Name', 'Kingdom' and so on.
 
