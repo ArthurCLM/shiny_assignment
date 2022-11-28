@@ -1,4 +1,6 @@
-# Shin Appsilon assignment
+# Shiny Appsilon assignment
+
+The project can be seen at the link: https://arthurclm.shinyapps.io/shiny/
 
 The dashboard works as follows:
 
@@ -14,10 +16,10 @@ We can also see that there is another filter that the user can view only points 
 
 ![](shiny_appsilon_assignment/images_tutorial/img2.png)
 
-The tabs **'Table', 'Chart-Line', 'Other Charts'** 
+The tabs called **'Table', 'Chart-Line', 'Other Charts'** are information regarding the base country of Poland. The first one is a summary of the filtered information, the second one is a time series graph of the information and the last tab is just some bar graphs of other variables that i found interesting for the user to see.
+
+All the steps to obtain the final base for the realization of this project are present in the **get.data.R** function, there I commented step by step all the approaches I had and my idea of how to extract the database from Poland.
 
 **About the Extra tasks**
 
 Beautiful UI skill: I change the layout a little bit, using .css file within the *www* folder
-
-I also put this dashboard on https://www.shinyapps.io/, follow the link: https://arthurclm.shinyapps.io/shiny/
