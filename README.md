@@ -8,6 +8,10 @@ When loading the screen, the user can observe two filters and a map, each of the
 
 ![](images_tutorial/img1.png)
 
+The user can also view table, timeline chart and so on for all database observations.
+
+![](images_tutorial/img1_2.png)
+
 In the 'Map' tab, the user can observe the points on the map, when touching the observation, some information that I found of some relevance to the user will appear, such as: 'Id', 'Country', 'Vernacular Name' , 'Scientific Name', 'Kingdom' and so on.
 
 ![](images_tutorial/img2.png)
