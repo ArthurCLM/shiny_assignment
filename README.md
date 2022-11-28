@@ -27,3 +27,5 @@ All the steps to obtain the final base for the realization of this project are p
 **About the Extra tasks**
 
 Beautiful UI skill: I change the layout a little bit, using .css file within the *www* folder
+
+Performance optimization skill: I didn't have enough processing to do such an operation. My approach would be to transform the **.csv** into **.parquet**, or partition the **.csv** to later transform into **.parquet**, but I didn't have enough processing for that.
