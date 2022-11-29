@@ -103,10 +103,6 @@ shinyServer(function(input, output, session) {
         }
     })
     
-    output$test <- renderText({
-      print(input[["type_choices-vernacularName"]])
-    })
-    
     # Table of timeline of the observed species and the timeline chart, all of these in callModule
     callModule(viz_timeline_table_srv, "table_timeline", data = data_filtered, 
                id, eventDate, latitudeDecimal, longitudeDecimal,
@@ -133,7 +129,7 @@ shinyServer(function(input, output, session) {
                var = sex, var_name = 'sex',
                title_name = 'Bar chart of the sex of those species that were observed.')
     
-    #Time line
+    #Timeline
     callModule(viz_timeline_srv, "timeline", data = data_filtered, today = eventDate)
     
     
