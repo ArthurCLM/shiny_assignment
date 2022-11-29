@@ -12,7 +12,7 @@ The user can also view table, timeline chart and so on for all database observat
 
 ![](images_tutorial/img1_2.png)
 
-In the 'Map' tab, the user can observe the points on the map, when touching the observation, some information that I found of some relevance to the user will appear, such as: 'Id', 'Country', 'Vernacular Name' , 'Scientific Name', 'Kingdom' and so on.
+In the 'Map' tab, the user can observe the points on the map, when touching the observation, some information that i thought of some relevance to the user will appear, such as: 'Id', 'Country', 'Vernacular Name' , 'Scientific Name', 'Kingdom' and so on.
 
 ![](images_tutorial/img2.png)
 
@@ -20,7 +20,7 @@ We can also see that there is another filter that the user can view only points 
 
 ![](images_tutorial/img3.png)
 
-The tabs called **'Table', 'Chart-Line', 'Other Charts'** are information regarding the database country of Poland. The first one is a summary of the filtered information, the second one is a time series graph of the information and the last tab is just some bar graphs of other variables that i found interesting for the user to see.
+The tabs called **'Table', 'Chart-Line', 'Other Charts'** are information regarding the database country of Poland. The first one is a summary of the filtered information, the second one is a time series graph of the information and the last tab is just some bar graphs of other variables that i thought interesting for the user to see.
 
 All the steps to obtain the final database for the realization of this project are present in the **get.data.R** function, there I commented step by step all the approaches I had and my idea of how to extract the database of Poland.
 
