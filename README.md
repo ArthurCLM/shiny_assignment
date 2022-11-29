@@ -1,6 +1,6 @@
 # Shiny Appsilon assignment
 
-The project can be seen at the link: https://arthurclm.shinyapps.io/shiny/
+I built this dashboard using the **bs4Dash** package. The project can be seen at the link: https://arthurclm.shinyapps.io/shiny/
 
 The dashboard works as follows:
 
