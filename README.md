@@ -1,10 +1,10 @@
 # Shiny Appsilon assignment
 
-I built this dashboard using the **bs4Dash** package. The project can be seen at the link: https://arthurclm.shinyapps.io/shiny/
+I built this dashboard using the **bs4Dash** package. The project can be seen at the link: https://arthurclm.shinyapps.io/Appsilon_assignment/
 
 The dashboard works as follows:
 
-When loading the screen, the user can observe two filters and a map, each of these filters represents the type of selection, one being by the "vernacularName" variable and the other by the "scientificName", it is worth nothing that when selecting a filter option "vernacularName", automatically the filter "scientificName" is updated and consequently the database of observations is updated as well. As a consequence, when updating the database, the tabs **Map**, **Table**, **Chart Line** and **'Other charts'** are updated automatically.
+When loading the screen, the user can observe two filters and a map, each of these filters represents the type of selection, one being by the "vernacularName" variable and the other by the "scientificName", it is worth nothing that when selecting a filter option "vernacularName", automatically the filter "scientificName" is updated and consequently the database of observations is updated as well. As a consequence, when updating the database, the tabs **Map**, **Table**, **Line Chart** and **'Other charts'** are updated automatically.
 
 ![](images_tutorial/img1.png)
 
@@ -20,7 +20,7 @@ We can also see that there is another filter that the user can view only points 
 
 ![](images_tutorial/img3.png)
 
-The tabs called **'Table', 'Chart-Line', 'Other Charts'** are information regarding the database country of Poland. The first one is a summary of the filtered information, the second one is a time series graph of the information and the last tab is just some bar graphs of other variables that i thought interesting for the user to see. Also, I added a timeline on the left side.
+The tabs called **'Table', 'Line Chart', 'Other Charts'** are information regarding the database country of Poland. The first one is a summary of the filtered information, the second one is a time series graph of the information and the last tab is just some bar graphs of other variables that i thought interesting for the user to see. Also, I added a timeline on the left side.
 
 ![](images_tutorial/img4.png)
 
