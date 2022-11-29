@@ -1,23 +1,5 @@
 shinyServer(function(input, output, session) {
     
-    observeEvent(c(input[["type_choices-vernacularName"]], input[["type_choices-scientificName"]]),{
-      output$get_only_image_id <- renderUI({
-        if(length(input[["type_choices-vernacularName"]])>0 | length(input[["type_choices-scientificName"]])>0){
-          awesomeCheckbox(
-            inputId = "only_image_id",
-            label = "Only spots with images available?",
-            value = FALSE,
-            status = "success"
-          )
-        }
-
-      })
-    })
-
-    observeEvent(input[["type_choices-reset_all"]],{
-      updateAwesomeCheckbox(session = session, inputId = "only_image_id", value = FALSE)
-    })
-      
     #The first data that is filtered by the columns 'vernacularName' and 'scientificName'
     data_type_choices <- callModule(
       module = selectizeGroupServer,
@@ -35,35 +17,14 @@ shinyServer(function(input, output, session) {
         }
       })
 
-    #Creating the default map
-    output$map <- renderLeaflet({
-      leaflet(options = leafletOptions(preferCanvas = TRUE)) %>%
-      addProviderTiles(provider = providers$CartoDB.DarkMatter) %>%
-      addPolygons(data= poly_poland, stroke = TRUE, 
-                  group = 'poly',
-                  opacity = 1.5, 
-                  weight = 1, 
-                  fill = T,
-                  smoothFactor = 0.2,
-                  fillOpacity = 0.2,
-                  color = '#0d8a01',
-                  fillColor = '#0d8a01',
-                  label = list(HTML(paste0("<strong>Country</strong>: ", str_to_upper(poly_poland$NAME_0),
-                                             "<br/>",
-                                             "<strong>Number of observations</strong>: ", nrow(df_poland),
-                                             "<br/>",
-                                             "<strong>Number of images available</strong>: ", length(na.omit(df_poland$accessURI)),
-                                             "<br/>")
-                                    )),
-                  labelOptions=labelOptions(textsize = "10px"))
-
-    })
+    #Creating the default map using module
+    callModule(viz_leaflet_map_srv, "map", data = df_poland, data_poly = poly_poland)
     
     #Using leafletProxy to change the map according the change of the filters.
     observe({
         
         if((length(input[["type_choices-vernacularName"]])==0 & length(input[["type_choices-scientificName"]])==0) | nrow(data_filtered()) == 0){
-          leafletProxy('map') %>% clearMarkers()
+          leafletProxy('map-map_viz') %>% clearMarkers()
         }else{
 
           coords <- data_filtered() %>%  
@@ -87,7 +48,7 @@ shinyServer(function(input, output, session) {
                                                    "<strong>Image available?</strong>: ", if_else(is.na(accessURI), 'No', 'Yes!'))))) %>% 
             ungroup
           
-          leafletProxy('map', data = coords) %>% 
+          leafletProxy('map-map_viz', data = coords) %>% 
             clearMarkers() %>% 
             addProviderTiles(provider = providers$CartoDB.DarkMatter) %>% 
             leaflet::addAwesomeMarkers(group = "inf",
@@ -115,21 +76,21 @@ shinyServer(function(input, output, session) {
     # Bar charts callModule for taxi Rank, kingdom, lifeStage, sex, respectively.
     callModule(viz_bar_chart_srv, "chart_bar_taxonRank", data = data_filtered, 
                var = taxonRank, var_name = 'taxonRank',
-               title_name = 'Bar chart of the taxonRank of those species that were observed.')
+               title_name = 'Bar chart of the taxonRank.')
     
     callModule(viz_bar_chart_srv, "chart_bar_kingdom", data = data_filtered, 
                var = kingdom, var_name = 'kingdom', 
-               title_name = 'Bar chart of the kingdom of those species that were observed.')
+               title_name = 'Bar chart of the kingdom.')
     
     callModule(viz_bar_chart_srv, "chart_bar_lifeStage", data = data_filtered, 
                var = lifeStage, var_name = 'lifeStage',
-               title_name = 'Bar chart of the lifeStage of those species that were observed.')
+               title_name = 'Bar chart of the lifeStage.')
     
     callModule(viz_bar_chart_srv, "chart_bar_sex", data = data_filtered, 
                var = sex, var_name = 'sex',
-               title_name = 'Bar chart of the sex of those species that were observed.')
+               title_name = 'Bar chart of the sex.')
     
-    #Timeline
+    #Time line
     callModule(viz_timeline_srv, "timeline", data = data_filtered, today = eventDate)
     
     
@@ -144,5 +105,26 @@ shinyServer(function(input, output, session) {
         )
       }
     })
+    
+    #Part that make the extra filter appear.
+    observeEvent(c(input[["type_choices-vernacularName"]], input[["type_choices-scientificName"]]),{
+      output$get_only_image_id <- renderUI({
+        if(length(input[["type_choices-vernacularName"]])>0 | length(input[["type_choices-scientificName"]])>0){
+          awesomeCheckbox(
+            inputId = "only_image_id",
+            label = "Only spots with images available?",
+            value = FALSE,
+            status = "success"
+          )
+        }
+      })
+      
+    })
+    
+    observeEvent(input[["type_choices-reset_all"]],{
+      updateAwesomeCheckbox(session = session, inputId = "only_image_id", value = FALSE)
+    })
+    
+    
     
 }) 

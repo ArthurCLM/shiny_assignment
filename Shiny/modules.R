@@ -1,3 +1,39 @@
+#Responsable to do the
+viz_leaflet_map_ui<-function(id, height){
+  ns <- NS(id)
+  leafletOutput(ns("map_viz"), height = height)
+}
+
+viz_leaflet_map_srv<-function(input, output, session, data, data_poly){
+  
+  output$map_viz <- renderLeaflet({
+    leaflet(options = leafletOptions(preferCanvas = TRUE)) %>%
+      addProviderTiles(provider = providers$CartoDB.DarkMatter) %>%
+      addPolygons(data = data_poly, stroke = TRUE, 
+                  group = 'poly',
+                  opacity = 1.5, 
+                  weight = 1, 
+                  fill = T,
+                  smoothFactor = 0.2,
+                  fillOpacity = 0.2,
+                  color = '#0d8a01',
+                  fillColor = '#0d8a01',
+                  label = list(HTML(paste0("<strong>Country</strong>: ", str_to_upper(data_poly$NAME_0),
+                                           "<br/>",
+                                           "<strong>Number of observations</strong>: ", nrow(data),
+                                           "<br/>",
+                                           "<strong>Number of images available</strong>: ", length(na.omit(data$accessURI)),
+                                           "<br/>")
+                  )),
+                  labelOptions=labelOptions(textsize = "10px"))
+    
+  })
+  
+}
+
+
+
+#Responsable to do the
 viz_timeline_table_ui<-function(id){
   ns <- NS(id)
   DT::DTOutput(ns("tbl_viz"))
@@ -29,7 +65,7 @@ viz_timeline_table_srv<-function(input, output, session, data, ...){
   
 }
 
-
+#Responsable to do the timeline chart
 viz_timeline_chart_ui<-function(id){
   ns <- NS(id)
   plotly::plotlyOutput(ns("plotly"), height = 250, width = '99%')
@@ -42,8 +78,7 @@ viz_timeline_chart_srv<-function(input, output, session, data, today, title_name
     data() %>%
       count(!!today) %>%
       plotly::plot_ly(x = today, y = ~n,
-                      type = 'scatter',
-                      mode = 'lines') %>% 
+                      mode = 'lines+markers') %>% 
       layout(title = title_name, 
              plot_bgcolor = "#e5ecf6", 
              xaxis = list(title = 'Event Date'), 
@@ -53,6 +88,7 @@ viz_timeline_chart_srv<-function(input, output, session, data, today, title_name
   
 }
 
+#Responsable to do the extra bar_charts
 viz_bar_chart_ui<-function(id){
   ns <- NS(id)
   echarts4r::echarts4rOutput(ns("bar_charts"), width = '100%')
@@ -63,25 +99,21 @@ viz_bar_chart_srv<-function(input, output, session, data, var, var_name, title_n
   
   output$bar_charts <- echarts4r::renderEcharts4r({
     
-    tbl_count<- data() %>%
+  data() %>%
       count(!!var) %>%
-      arrange(n)
-    if(nrow(tbl_count)>0){
-    
-    tbl_count %>% 
+      arrange(n)  %>% 
       e_charts_(x = var_name) %>%
       e_bar(serie = n, legend = FALSE, name = "Quantitative") %>%
       e_tooltip() %>%
       e_title(title_name) %>%
       e_y_axis(splitLine = list(show = TRUE)) %>%
       e_x_axis(show = TRUE)
-    }
     
   })
   
 }
 
-
+#Responsable to do the timeline
 viz_timeline_ui<-function(id){
   ns <- NS(id)
   shiny::uiOutput(ns("viz_timeline"))
@@ -102,7 +134,7 @@ viz_timeline_srv<-function(input, output, session, data, today){
           
           result <- lapply(1:nrow(data()), function(i){
             each <- data()[i,]
-            information <- paste0("Event: ", each$locality, ' | ', "Name: ", each$scientificName)
+            information <- paste0("Locality: ", each$locality, '              ', "Name: ", each$scientificName)
             glue('bs4TimelineItem(title="",icon=icon("check"), color = "teal",time="", footer="{each$eventDate}",
             "{information}", border = F)')
           })

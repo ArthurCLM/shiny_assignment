@@ -54,13 +54,14 @@ body <- dashboardBody(
             title = tagList(shiny::icon("far fa-chart-bar"), "Results"),
             tabPanel(title = tagList(shiny::icon("map-location-dot"), "Map"),
                      h4("Location of the selected species."),
-                     leafletOutput(outputId = 'map', height = 850)
+                     viz_leaflet_map_ui(id = 'map', height = 850)
+                     #leafletOutput(outputId = 'map', height = 850)
             ),
             tabPanel(title = tagList(shiny::icon("table"), "Table"),
                      h4("Table of the species that were observed."),
                      viz_timeline_table_ui(id = "table_timeline")
             ),
-            tabPanel(title = tagList(shiny::icon("chart-line"), "Chart Line"),
+            tabPanel(title = tagList(shiny::icon("chart-line"), "Line Chart"),
                      viz_timeline_chart_ui(id = "chart_timeline")
             ),
             tabPanel(title = tagList(shiny::icon("chart-pie"), "More charts"),
@@ -74,7 +75,7 @@ body <- dashboardBody(
     )
 )
 
-dashboardPage(scrollToTop = T, dark = NULL, header, sidebar, body, fullscreen = T,
+dashboardPage(scrollToTop = T, dark = NULL, header, sidebar, body, fullscreen = F,
               preloader = list(html = waiter::spin_3()))
 
 
