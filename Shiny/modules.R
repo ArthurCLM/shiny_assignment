@@ -15,7 +15,6 @@ viz_timeline_table_srv<-function(input, output, session, data, ...){
         dom = "Bfrpt",
         scrollX = TRUE,
         scrollY = TRUE,
-        ordering = TRUE,
         pageLength = 10,
         buttons = list(
           list(extend = 'excel', filename = "Table_timeline_species"))
@@ -77,6 +76,53 @@ viz_bar_chart_srv<-function(input, output, session, data, var, var_name, title_n
       e_y_axis(splitLine = list(show = TRUE)) %>%
       e_x_axis(show = TRUE)
     }
+    
+  })
+  
+}
+
+
+viz_timeline_ui<-function(id){
+  ns <- NS(id)
+  shiny::uiOutput(ns("viz_timeline"))
+}
+
+viz_timeline_srv<-function(input, output, session, data, today){
+  today <- enquo(today)
+  
+      output$viz_timeline <- renderUI({
+        
+        min_year <- data() %>% pull(!!today) %>% min()
+        max_year <- data() %>% pull(!!today) %>% max()
+        
+        if(nrow(data()) == nrow(df_poland) | nrow(data()) == 0){
+          compile_result <- NULL
+          
+        }else{
+          
+          result <- lapply(1:nrow(data()), function(i){
+            each <- data()[i,]
+            information <- paste0("Event: ", each$locality, ' | ', "Name: ", each$scientificName)
+            glue('bs4TimelineItem(title="",icon=icon("check"), color = "teal",time="", footer="{each$eventDate}",
+            "{information}", border = F)')
+          })
+          
+          compile_result <- lapply(1:length(result), function(i){
+            eval(parse(text = result[i]))
+          })
+          
+          
+        }
+        
+        bs4Timeline(width = "100%", 
+                    height='100%',
+                    reversed = TRUE,
+                    timelineEnd(color = "danger"),
+                    bs4TimelineLabel(paste0("First occurence: ", min_year), status = "info"),
+                    compile_result,
+                    bs4TimelineLabel(paste0("Last occurence: ", max_year), status = "info"),
+                    timelineStart(color = "secondary")
+        )
     
   })
   

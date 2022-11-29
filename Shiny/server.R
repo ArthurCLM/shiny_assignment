@@ -1,11 +1,5 @@
 shinyServer(function(input, output, session) {
     
-    output$menu <- renderMenu({
-        mylist <- list(menuItem("Species", tabName = "species", icon = shiny::icon('tree')))
-        shinydashboard::sidebarMenu(mylist)
-        
-    })
-    
     observeEvent(c(input[["type_choices-vernacularName"]], input[["type_choices-scientificName"]]),{
       output$get_only_image_id <- renderUI({
         if(length(input[["type_choices-vernacularName"]])>0 | length(input[["type_choices-scientificName"]])>0){
@@ -46,6 +40,7 @@ shinyServer(function(input, output, session) {
       leaflet(options = leafletOptions(preferCanvas = TRUE)) %>%
       addProviderTiles(provider = providers$CartoDB.DarkMatter) %>%
       addPolygons(data= poly_poland, stroke = TRUE, 
+                  group = 'poly',
                   opacity = 1.5, 
                   weight = 1, 
                   fill = T,
@@ -59,7 +54,8 @@ shinyServer(function(input, output, session) {
                                              "<br/>",
                                              "<strong>Number of images available</strong>: ", length(na.omit(df_poland$accessURI)),
                                              "<br/>")
-                                    )))
+                                    )),
+                  labelOptions=labelOptions(textsize = "10px"))
 
     })
     
@@ -94,18 +90,21 @@ shinyServer(function(input, output, session) {
           leafletProxy('map', data = coords) %>% 
             clearMarkers() %>% 
             addProviderTiles(provider = providers$CartoDB.DarkMatter) %>% 
-            leaflet::addCircleMarkers(radius = 4,
-                                      group = "points",
-                                      color = '#0d8a01',
+            leaflet::addAwesomeMarkers(group = "inf",
                                       lng = ~longitudeDecimal, lat = ~latitudeDecimal,
-                                      weight = 2, 
-                                      stroke = T,
-                                      opacity = 1, label = coords$label, 
+                                      label = coords$label, 
+                                      labelOptions=labelOptions(textsize = "12px"),
                                       popup = ~ if_else(is.na(accessURI), 
                                                         'Image not available', 
-                                                        paste0("<img src = ", accessURI, " width = 200>"))) 
-          
+                                                        paste0("<img src = ", accessURI, " width = 150>")
+                                                        ),
+                                      options = popupOptions(closeButton = T, textsize = "10px", keepInView = T)
+                                      )
         }
+    })
+    
+    output$test <- renderText({
+      print(input[["type_choices-vernacularName"]])
     })
     
     # Table of timeline of the observed species and the timeline chart, all of these in callModule
@@ -134,6 +133,10 @@ shinyServer(function(input, output, session) {
                var = sex, var_name = 'sex',
                title_name = 'Bar chart of the sex of those species that were observed.')
     
+    #Time line
+    callModule(viz_timeline_srv, "timeline", data = data_filtered, today = eventDate)
+    
+    
     #Shinyalert if in one time there is no observation to see.
     shiny::observeEvent(input$only_image_id, {
       if (isTRUE(input$only_image_id) & nrow(data_filtered())==0) {
@@ -145,15 +148,5 @@ shinyServer(function(input, output, session) {
         )
       }
     })
-    
-    #Switch button just to switch
-    shiny::observeEvent(input$switch, {
-        if (input$switch != TRUE) {
-            shinyjs::addClass(selector = "body", class = "sidebar-collapse")
-        } else {
-            shinyjs::removeClass(selector = "body", class = "sidebar-collapse")
-        }
-    })
-
     
 }) 
