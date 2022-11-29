@@ -20,7 +20,10 @@ We can also see that there is another filter that the user can view only points 
 
 ![](images_tutorial/img3.png)
 
-The tabs called **'Table', 'Chart-Line', 'Other Charts'** are information regarding the database country of Poland. The first one is a summary of the filtered information, the second one is a time series graph of the information and the last tab is just some bar graphs of other variables that i thought interesting for the user to see.
+The tabs called **'Table', 'Chart-Line', 'Other Charts'** are information regarding the database country of Poland. The first one is a summary of the filtered information, the second one is a time series graph of the information and the last tab is just some bar graphs of other variables that i thought interesting for the user to see. Also, I added a timeline on the left side.
+
+![](images_tutorial/img4.png)
+
 
 All the steps to obtain the final database for the realization of this project are present in the **get.data.R** function, there I commented step by step all the approaches I had and my idea of how to extract the database of Poland.
 
