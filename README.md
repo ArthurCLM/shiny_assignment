@@ -1,4 +1,4 @@
-# Shiny Appsilon assignment
+# Shiny Assignment
 
 I built this dashboard using the **bs4Dash** package. The project can be seen at the link: https://arthurclm.shinyapps.io/Appsilon_assignment/
 
@@ -26,9 +26,3 @@ The tabs called **'Table', 'Line Chart', 'Other Charts'** are information regard
 
 
 All the steps to obtain the final database for the realization of this project are present in the **get.data.R** function, there I commented step by step all the approaches I had and my idea of how to extract the database of Poland.
-
-**About the Extra tasks**
-
-Beautiful UI skill: I change the layout a little bit, using .css file within the *www* folder
-
-Performance optimization skill: I didn't have enough processing to do such an operation. My approach would be to transform the **.csv** into **.parquet**, or partition the **.csv** to later transform into **.parquet**, but I didn't have enough processing for that.
